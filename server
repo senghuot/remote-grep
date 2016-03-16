@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]
+then
+	echo "Usage: host port"
+	exit 1
+fi
+python server.py $1
