@@ -4,7 +4,7 @@ from struct import *
 import threading
 
 
-HOST = "localhost"
+HOST = "0.0.0.0"
 PORT = 8888
 MAX  = 100
 
@@ -38,8 +38,6 @@ def process_data(client_socket):
     buffs = buffs.split("\r\n\r\n")
     buffs = buffs[:len(buffs)-1]
 
-    print buffs
-
     all_buff = ''
     for buff in buffs:
 
@@ -57,10 +55,7 @@ def process_data(client_socket):
                 if word in keywords:
                     counts[word] += 1
 
-        print filename, counts
-
         all_buff += pack_data(filename, counts)
-        print all_buff
 
     client_socket.sendall(all_buff)
 
